@@ -1,0 +1,62 @@
+{
+	"name": "employeeFactSynapse",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapseLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "toSynapseNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "employee_key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "employee_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "total_distinct_territories",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "total_distinct_regions",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "num_orders_affiliated",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "num_products_affiliated",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "created_ts",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "northwind",
+			"table": "FactEmployee"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,41 @@
+{
+	"name": "categorySynapse",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapseLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "toSynapseNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "category_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "category_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "created_ts",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "northwind",
+			"table": "DimCategory"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

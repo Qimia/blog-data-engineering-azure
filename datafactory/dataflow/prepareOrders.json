@@ -1,0 +1,38 @@
+{
+	"name": "prepareOrders",
+	"properties": {
+		"folder": {
+			"name": "northwind"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ordersTable",
+						"type": "DatasetReference"
+					},
+					"name": "OrdersTable"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ordersParquet",
+						"type": "DatasetReference"
+					},
+					"name": "OrdersParquet"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DerivedColumnYearMonthDay"
+				},
+				{
+					"name": "FilterRows"
+				}
+			],
+			"script": "parameters{\n\tyear_p as integer (1996),\n\tmonth_p as integer (7),\n\tday_p as integer (15)\n}\nsource(output(\n\t\tOrderID as integer,\n\t\tCustomerID as string,\n\t\tEmployeeID as integer,\n\t\tOrderDate as timestamp,\n\t\tRequiredDate as timestamp,\n\t\tShippedDate as timestamp,\n\t\tShipVia as integer,\n\t\tFreight as decimal(19,4),\n\t\tShipName as string,\n\t\tShipAddress as string,\n\t\tShipCity as string,\n\t\tShipRegion as string,\n\t\tShipPostalCode as string,\n\t\tShipCountry as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> OrdersTable\nFilterRows derive(year = year(OrderDate),\n\t\tmonth = month(OrderDate),\n\t\tday = dayOfMonth(OrderDate),\n\tpartitionBy('key',\n\t\t0,\n\t\tyear,\n\t\tmonth,\n\t\tday\n\t)) ~> DerivedColumnYearMonthDay\nOrdersTable filter(coalesce(ShippedDate, OrderDate)==toTimestamp(toString($month_p) + '/' + toString($day_p) + '/' + toString($year_p), 'MM/dd/yyyy')) ~> FilterRows\nDerivedColumnYearMonthDay sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> OrdersParquet"
+		}
+	}
+}

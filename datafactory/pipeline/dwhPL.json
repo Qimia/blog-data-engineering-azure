@@ -1,0 +1,128 @@
+{
+	"name": "dwhPL",
+	"properties": {
+		"activities": [
+			{
+				"name": "aggregateData",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "aggregateData",
+						"type": "DataFlowReference",
+						"parameters": {
+							"month_p": {
+								"value": "@int(substring(pipeline().parameters.date,5,2))",
+								"type": "Expression"
+							},
+							"year_p": {
+								"value": "@int(substring(pipeline().parameters.date,0,4))",
+								"type": "Expression"
+							}
+						},
+						"datasetParameters": {
+							"categorySource": {
+								"year_p": 1996,
+								"month_p": 7,
+								"day_p": 16
+							},
+							"employeesSource": {
+								"year_p": 1996,
+								"month_p": 7,
+								"day_p": 16
+							},
+							"orderDetailsSource": {
+								"year_p": 1996,
+								"month_p": 7,
+								"day_p": 16
+							},
+							"terretoriesSource": {
+								"year_p": 1996,
+								"month_p": 7,
+								"day_p": 16
+							},
+							"employeeTerretoriesSource": {
+								"year_p": 1996,
+								"month_p": 7,
+								"day_p": 16
+							},
+							"supplierSource": {
+								"year_p": 1996,
+								"month_p": 7,
+								"day_p": 16
+							},
+							"productsSource": {
+								"year_p": 1996,
+								"month_p": 7,
+								"day_p": 16
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					}
+				}
+			},
+			{
+				"name": "CopyToSynapse",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "aggregateData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "toSynapsePL",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "DeleteAggregate",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "CopyToSynapse",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "deletePL",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"parameters": {
+			"date": {
+				"type": "string",
+				"defaultValue": "1997-12-31"
+			}
+		},
+		"folder": {
+			"name": "dwhPL"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

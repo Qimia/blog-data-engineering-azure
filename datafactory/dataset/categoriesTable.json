@@ -1,0 +1,38 @@
+{
+	"name": "categoriesTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "inputNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CategoryID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CategoryName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Description",
+				"type": "ntext"
+			},
+			{
+				"name": "Picture",
+				"type": "image"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Categories"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

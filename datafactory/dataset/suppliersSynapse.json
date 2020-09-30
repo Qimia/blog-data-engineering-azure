@@ -1,0 +1,41 @@
+{
+	"name": "suppliersSynapse",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapseLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "toSynapseNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "supplier_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "company_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "created_ts",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "northwind",
+			"table": "DimSupplier"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

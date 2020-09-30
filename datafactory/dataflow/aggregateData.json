@@ -1,0 +1,319 @@
+{
+	"name": "aggregateData",
+	"properties": {
+		"folder": {
+			"name": "northwind"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "categoriesParquet",
+						"type": "DatasetReference"
+					},
+					"name": "categorySource"
+				},
+				{
+					"dataset": {
+						"referenceName": "employeesParquet",
+						"type": "DatasetReference"
+					},
+					"name": "employeesSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "ordersParquet",
+						"type": "DatasetReference"
+					},
+					"name": "ordersSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderDetailsParquet",
+						"type": "DatasetReference"
+					},
+					"name": "orderDetailsSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "territoriesParquet",
+						"type": "DatasetReference"
+					},
+					"name": "terretoriesSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "employeeTerritoriesParquet",
+						"type": "DatasetReference"
+					},
+					"name": "employeeTerretoriesSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "suppliersParquet",
+						"type": "DatasetReference"
+					},
+					"name": "supplierSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "productsParquet",
+						"type": "DatasetReference"
+					},
+					"name": "productsSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "ordersParquet",
+						"type": "DatasetReference"
+					},
+					"name": "orderMonthlySource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DimCategory",
+						"type": "DatasetReference"
+					},
+					"name": "sinkCategory"
+				},
+				{
+					"dataset": {
+						"referenceName": "FactSupervisor",
+						"type": "DatasetReference"
+					},
+					"name": "sinkSupervisor"
+				},
+				{
+					"dataset": {
+						"referenceName": "DimEmployee",
+						"type": "DatasetReference"
+					},
+					"name": "sinkEmployeeDim"
+				},
+				{
+					"dataset": {
+						"referenceName": "FactEmployee",
+						"type": "DatasetReference"
+					},
+					"name": "sinkFactEmployee"
+				},
+				{
+					"dataset": {
+						"referenceName": "DimSupplier",
+						"type": "DatasetReference"
+					},
+					"name": "sinkSupplier"
+				},
+				{
+					"dataset": {
+						"referenceName": "FactProduct",
+						"type": "DatasetReference"
+					},
+					"name": "sinkProduct"
+				},
+				{
+					"dataset": {
+						"referenceName": "FactEmployeeMonthly",
+						"type": "DatasetReference"
+					},
+					"name": "sinkFactEmployeeMonthly"
+				}
+			],
+			"transformations": [
+				{
+					"name": "AddKeyCategory"
+				},
+				{
+					"name": "SelectCategory"
+				},
+				{
+					"name": "SelectEmployee"
+				},
+				{
+					"name": "SelectOrders"
+				},
+				{
+					"name": "SelectOrderDetails"
+				},
+				{
+					"name": "AggregateDistinctReportTo"
+				},
+				{
+					"name": "FilterReportToNotNull"
+				},
+				{
+					"name": "AddKeySupervisor"
+				},
+				{
+					"name": "AddKeyEmployee"
+				},
+				{
+					"name": "JoinEmpOrders"
+				},
+				{
+					"name": "JoinTotalProducts"
+				},
+				{
+					"name": "SelectJoinOrders"
+				},
+				{
+					"name": "SelectTerretories"
+				},
+				{
+					"name": "SelectEmpTerretories"
+				},
+				{
+					"name": "JoinTerretories"
+				},
+				{
+					"name": "SelectJoinTerretories"
+				},
+				{
+					"name": "JoinEmpTerrReg"
+				},
+				{
+					"name": "SelectJoinedOrders"
+				},
+				{
+					"name": "AggregateEmployee"
+				},
+				{
+					"name": "AddKeyAggEmployee"
+				},
+				{
+					"name": "SelectSupplier"
+				},
+				{
+					"name": "AddKeySupplier"
+				},
+				{
+					"name": "SelectProducts"
+				},
+				{
+					"name": "AggregateTimesOrdered"
+				},
+				{
+					"name": "JoinProducts"
+				},
+				{
+					"name": "AddKeyProducts"
+				},
+				{
+					"name": "SelectEmployeeID"
+				},
+				{
+					"name": "SelectEmployeeJoin"
+				},
+				{
+					"name": "SelectProductsJoin"
+				},
+				{
+					"name": "MapOrdersMonthly",
+					"description": "Creates an explicit mapping for each drifted column"
+				},
+				{
+					"name": "MapOrders",
+					"description": "Creates an explicit mapping for each drifted column"
+				},
+				{
+					"name": "SelectOrdersMonthly"
+				},
+				{
+					"name": "JoinOrderDetails"
+				},
+				{
+					"name": "AggregateTotalProducts"
+				},
+				{
+					"name": "SelectJoinOrdersMonthly"
+				},
+				{
+					"name": "JoinEmpOrdersMonthly"
+				},
+				{
+					"name": "SelectEmployeeJoinMonthly"
+				},
+				{
+					"name": "AggregateEmployeeMonthly"
+				},
+				{
+					"name": "AddKeyAggEmpMonthly"
+				},
+				{
+					"name": "AddMonthYear"
+				},
+				{
+					"name": "SelectSupervisor"
+				},
+				{
+					"name": "SelectEmployeeKey"
+				},
+				{
+					"name": "JoinEmployeeKeyDimSup"
+				},
+				{
+					"name": "JoinEmployeeKeyFactEmpMonth"
+				},
+				{
+					"name": "JoinEmployeeKeyFactEmp"
+				},
+				{
+					"name": "finSelectFactEmployee"
+				},
+				{
+					"name": "finSelectFactEmpMonthly"
+				},
+				{
+					"name": "finSelectDimSupervisor"
+				},
+				{
+					"name": "SelectSupplierKey"
+				},
+				{
+					"name": "SelectCategoryKey"
+				},
+				{
+					"name": "JoinCategoryKey"
+				},
+				{
+					"name": "JoinSupplierKey"
+				},
+				{
+					"name": "finSelectDimEmployee"
+				},
+				{
+					"name": "MapCategory",
+					"description": "Creates an explicit mapping for each drifted column"
+				},
+				{
+					"name": "MapEmployees",
+					"description": "Creates an explicit mapping for each drifted column"
+				},
+				{
+					"name": "MapOrderDetails",
+					"description": "Creates an explicit mapping for each drifted column"
+				},
+				{
+					"name": "MapTerretories",
+					"description": "Creates an explicit mapping for each drifted column"
+				},
+				{
+					"name": "MapTerritoriesEmployee",
+					"description": "Creates an explicit mapping for each drifted column"
+				},
+				{
+					"name": "MapSuppliers",
+					"description": "Creates an explicit mapping for each drifted column"
+				},
+				{
+					"name": "MapProducts",
+					"description": "Creates an explicit mapping for each drifted column"
+				}
+			],
+			"script": "parameters{\n\tmonth_p as integer (7),\n\tyear_p as integer (1996)\n}\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\twildcardPaths:[('prepared/products/year=' + toString($year_p) + '/month=' + toString($month_p) + '/**/*parquet')]) ~> categorySource\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\twildcardPaths:[('prepared/categories/year=' + toString($year_p) + '/month=' + toString($month_p) + '/**/*parquet')]) ~> employeesSource\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionRootPath: 'prepared/orders',\n\tformat: 'parquet',\n\twildcardPaths:[('prepared/orders/**/**/**/*parquet')]) ~> ordersSource\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\twildcardPaths:[('prepared/orderDetails/year=' + toString($year_p) + '/month=' + toString($month_p) + '/**/*parquet')]) ~> orderDetailsSource\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\twildcardPaths:[('prepared/territories/year=' + toString($year_p) + '/month=' + toString($month_p) + '/**/*parquet')]) ~> terretoriesSource\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\twildcardPaths:[('prepared/employeeTerritories/year=' + toString($year_p) + '/month=' + toString($month_p) + '/**/*parquet')]) ~> employeeTerretoriesSource\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\twildcardPaths:[('prepared/suppliers/year=' + toString($year_p) + '/month=' + toString($month_p) + '/**/*parquet')]) ~> supplierSource\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\twildcardPaths:[('prepared/employees/year=' + toString($year_p) + '/month=' + toString($month_p) + '/**/*parquet')]) ~> productsSource\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionRootPath: 'prepared/orders',\n\tformat: 'parquet',\n\twildcardPaths:[('prepared/orders/year=' + toString($year_p) + '/month=' + toString($month_p) + '/**/*parquet')]) ~> orderMonthlySource\nSelectCategory derive(key = crc32(512,category_id,category_name),\n\t\tcreated_ts = currentTimestamp()) ~> AddKeyCategory\nMapCategory select(mapColumn(\n\t\tcategory_id = CategoryID,\n\t\tcategory_name = CategoryName\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectCategory\nMapEmployees select(mapColumn(\n\t\tEmployeeID,\n\t\tLastName,\n\t\tFirstName,\n\t\tBirthDate,\n\t\tHireDate,\n\t\tAddress,\n\t\tCity,\n\t\tRegion,\n\t\tPostalCode,\n\t\tCountry,\n\t\tReportsTo\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectEmployee\nMapOrders select(mapColumn(\n\t\tOrderID,\n\t\tCustomerID,\n\t\tEmployeeID,\n\t\tOrderDate,\n\t\tRequiredDate,\n\t\tShippedDate,\n\t\tShipVia,\n\t\tyear,\n\t\tmonth\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectOrders\nMapOrderDetails select(mapColumn(\n\t\tOrderID,\n\t\tProductID,\n\t\tQuantity\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectOrderDetails\nSelectEmployee aggregate(groupBy(ReportsTo),\n\tworkerCounts = countDistinct(EmployeeID)) ~> AggregateDistinctReportTo\nAggregateDistinctReportTo filter(!isNull(ReportsTo)) ~> FilterReportToNotNull\nfinSelectDimSupervisor derive(key = crc32(512,employee_key),\n\t\tcreated_ts = currentTimestamp()) ~> AddKeySupervisor\nfinSelectDimEmployee derive(key = crc32(512,last_name,first_name,birth_date,hire_date,address,city,region,postal_code,country),\n\t\tcreated_ts = currentTimestamp()) ~> AddKeyEmployee\nSelectEmployeeID, SelectJoinOrders join(SelectEmployeeID@EmployeeID == SelectJoinOrders@EmployeeID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> JoinEmpOrders\nSelectOrders, AggregateTotalProducts join(SelectOrders@OrderID == AggregateTotalProducts@OrderID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinTotalProducts\nJoinTotalProducts select(mapColumn(\n\t\tOrderID = {SelectOrders@OrderID},\n\t\tCustomerID,\n\t\tEmployeeID,\n\t\tOrderDate,\n\t\tRequiredDate,\n\t\tShippedDate,\n\t\tShipVia,\n\t\tyear,\n\t\tmonth,\n\t\tOrderID = {AggregateTotalProducts@OrderID},\n\t\ttotal_products\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectJoinOrders\nMapTerretories select(mapColumn(\n\t\tTerritoryID,\n\t\tRegionID\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectTerretories\nMapTerritoriesEmployee select(mapColumn(\n\t\tEmployeeID,\n\t\tTerritoryID\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectEmpTerretories\nSelectEmpTerretories, SelectTerretories join(SelectEmpTerretories@TerritoryID == SelectTerretories@TerritoryID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinTerretories\nJoinTerretories select(mapColumn(\n\t\tEmployeeID,\n\t\tTerritoryID = {SelectEmpTerretories@TerritoryID},\n\t\tRegionID\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectJoinTerretories\nSelectEmployeeJoin, SelectJoinTerretories join(SelectEmployeeJoin@EmployeeID == SelectJoinTerretories@EmployeeID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinEmpTerrReg\nJoinEmpTerrReg select(mapColumn(\n\t\tEmployeeID = {SelectEmployeeJoin@EmployeeID},\n\t\tOrderID,\n\t\ttotal_products,\n\t\tTerritoryID,\n\t\tRegionID\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectJoinedOrders\nSelectJoinedOrders aggregate(groupBy(EmployeeID),\n\ttotal_orders = count(OrderID),\n\t\ttotal_products = sum(total_products),\n\t\ttotal_distinct_territories = countDistinct(TerritoryID),\n\t\ttotal_distinct_regions = countDistinct(RegionID)) ~> AggregateEmployee\nfinSelectFactEmployee derive(key = crc32(512, employee_key),\n\t\tcreated_ts = currentTimestamp()) ~> AddKeyAggEmployee\nMapSuppliers select(mapColumn(\n\t\tsupplier_id = SupplierID,\n\t\tcompany_name = CompanyName\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectSupplier\nSelectSupplier derive(key = crc32(512,supplier_id,company_name),\n\t\tcreated_ts = currentTimestamp()) ~> AddKeySupplier\nMapProducts select(mapColumn(\n\t\tProductID,\n\t\tSupplierID,\n\t\tCategoryID,\n\t\tUnitsInStock\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectProducts\nSelectOrderDetails aggregate(groupBy(ProductID),\n\ttimes_ordered = sum(Quantity)) ~> AggregateTimesOrdered\nSelectProducts, AggregateTimesOrdered join(SelectProducts@ProductID == AggregateTimesOrdered@ProductID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinProducts\nSelectProductsJoin derive(key = crc32(512,product_id),\n\t\tcreated_ts = currentTimestamp()) ~> AddKeyProducts\nSelectEmployee select(mapColumn(\n\t\tEmployeeID\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectEmployeeID\nJoinEmpOrders select(mapColumn(\n\t\tEmployeeID = {SelectEmployeeID@EmployeeID},\n\t\tOrderID,\n\t\tCustomerID,\n\t\tOrderDate,\n\t\tRequiredDate,\n\t\tShippedDate,\n\t\tShipVia,\n\t\tyear,\n\t\tmonth,\n\t\ttotal_products\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectEmployeeJoin\nJoinSupplierKey select(mapColumn(\n\t\tproduct_id = {SelectProducts@ProductID},\n\t\tunits_in_stock = UnitsInStock,\n\t\ttimes_ordered,\n\t\tcategory_key,\n\t\tsupplier_key\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectProductsJoin\norderMonthlySource derive(OrderID = toInteger(byName('OrderID')),\n\t\tCustomerID = toString(byName('CustomerID')),\n\t\tEmployeeID = toInteger(byName('EmployeeID')),\n\t\tOrderDate = toTimestamp(byName('OrderDate')),\n\t\tRequiredDate = toTimestamp(byName('RequiredDate')),\n\t\tShippedDate = toTimestamp(byName('ShippedDate')),\n\t\tShipVia = toInteger(byName('ShipVia')),\n\t\tFreight = toDecimal(byName('Freight')),\n\t\tShipName = toString(byName('ShipName')),\n\t\tShipAddress = toString(byName('ShipAddress')),\n\t\tShipCity = toString(byName('ShipCity')),\n\t\tShipRegion = toString(byName('ShipRegion')),\n\t\tShipPostalCode = toString(byName('ShipPostalCode')),\n\t\tShipCountry = toString(byName('ShipCountry')),\n\t\tyear = toInteger(byName('year')),\n\t\tmonth = toInteger(byName('month'))) ~> MapOrdersMonthly\nordersSource derive(OrderID = toInteger(byName('OrderID')),\n\t\tCustomerID = toString(byName('CustomerID')),\n\t\tEmployeeID = toInteger(byName('EmployeeID')),\n\t\tOrderDate = toTimestamp(byName('OrderDate')),\n\t\tRequiredDate = toTimestamp(byName('RequiredDate')),\n\t\tShippedDate = toTimestamp(byName('ShippedDate')),\n\t\tShipVia = toInteger(byName('ShipVia')),\n\t\tFreight = toDecimal(byName('Freight')),\n\t\tShipName = toString(byName('ShipName')),\n\t\tShipAddress = toString(byName('ShipAddress')),\n\t\tShipCity = toString(byName('ShipCity')),\n\t\tShipRegion = toString(byName('ShipRegion')),\n\t\tShipPostalCode = toString(byName('ShipPostalCode')),\n\t\tShipCountry = toString(byName('ShipCountry')),\n\t\tyear = toInteger(byName('year')),\n\t\tmonth = toInteger(byName('month'))) ~> MapOrders\nMapOrdersMonthly select(mapColumn(\n\t\tOrderID,\n\t\tCustomerID,\n\t\tEmployeeID,\n\t\tOrderDate,\n\t\tRequiredDate,\n\t\tShippedDate,\n\t\tShipVia,\n\t\tyear,\n\t\tmonth\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectOrdersMonthly\nSelectOrdersMonthly, SelectOrderDetails join(SelectOrdersMonthly@OrderID == SelectOrderDetails@OrderID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinOrderDetails\nSelectOrderDetails aggregate(groupBy(OrderID),\n\ttotal_products = sum(Quantity)) ~> AggregateTotalProducts\nJoinOrderDetails select(mapColumn(\n\t\tOrderID = {SelectOrdersMonthly@OrderID},\n\t\tCustomerID,\n\t\tEmployeeID,\n\t\tOrderDate,\n\t\tRequiredDate,\n\t\tShippedDate,\n\t\tShipVia,\n\t\tyear,\n\t\tmonth,\n\t\tOrderID = {SelectOrderDetails@OrderID},\n\t\tProductID,\n\t\tQuantity\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectJoinOrdersMonthly\nSelectEmployeeID, SelectJoinOrdersMonthly join(SelectEmployeeID@EmployeeID == SelectJoinOrdersMonthly@EmployeeID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> JoinEmpOrdersMonthly\nJoinEmpOrdersMonthly select(mapColumn(\n\t\tEmployeeID = {SelectEmployeeID@EmployeeID},\n\t\tOrderID,\n\t\tCustomerID,\n\t\tOrderDate,\n\t\tRequiredDate,\n\t\tShippedDate,\n\t\tShipVia,\n\t\tyear,\n\t\tmonth,\n\t\tProductID,\n\t\tQuantity\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectEmployeeJoinMonthly\nSelectEmployeeJoinMonthly aggregate(groupBy(EmployeeID),\n\ttotal_products = sum(Quantity),\n\t\ttotal_distinct_products = countDistinct(ProductID),\n\t\ttotal_orders = count(OrderID)) ~> AggregateEmployeeMonthly\nfinSelectFactEmpMonthly derive(key = crc32(512,employee_key,year,month),\n\t\tcreated_ts = currentTimestamp()) ~> AddKeyAggEmpMonthly\nJoinEmployeeKeyFactEmpMonth derive(year = $year_p,\n\t\tmonth = $month_p) ~> AddMonthYear\nFilterReportToNotNull select(mapColumn(\n\t\temployee_id = ReportsTo,\n\t\tnum_employees_directly_supervised = workerCounts\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectSupervisor\nAddKeyEmployee select(mapColumn(\n\t\tEmployeeID = employee_id,\n\t\tkey\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectEmployeeKey\nSelectSupervisor, SelectEmployeeKey join(employee_id == EmployeeID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinEmployeeKeyDimSup\nAggregateEmployeeMonthly, SelectEmployeeKey join(AggregateEmployeeMonthly@EmployeeID == SelectEmployeeKey@EmployeeID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinEmployeeKeyFactEmpMonth\nAggregateEmployee, SelectEmployeeKey join(AggregateEmployee@EmployeeID == SelectEmployeeKey@EmployeeID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinEmployeeKeyFactEmp\nJoinEmployeeKeyFactEmp select(mapColumn(\n\t\tnum_orders_affiliated = total_orders,\n\t\tnum_products_affiliated = total_products,\n\t\ttotal_distinct_territories,\n\t\ttotal_distinct_regions,\n\t\temployee_key = key\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> finSelectFactEmployee\nAddMonthYear select(mapColumn(\n\t\ttotal_products,\n\t\ttotal_distinct_products,\n\t\ttotal_orders,\n\t\temployee_key = key,\n\t\tyear,\n\t\tmonth\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> finSelectFactEmpMonthly\nJoinEmployeeKeyDimSup select(mapColumn(\n\t\tnum_employees_directly_supervised,\n\t\temployee_key = key\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> finSelectDimSupervisor\nAddKeySupplier select(mapColumn(\n\t\tsupplier_id,\n\t\tsupplier_key = key\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectSupplierKey\nAddKeyCategory select(mapColumn(\n\t\tcategory_id,\n\t\tcategory_key = key\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectCategoryKey\nJoinProducts, SelectCategoryKey join(CategoryID == category_id,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> JoinCategoryKey\nJoinCategoryKey, SelectSupplierKey join(SupplierID == supplier_id,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> JoinSupplierKey\nSelectEmployee select(mapColumn(\n\t\temployee_id = EmployeeID,\n\t\tlast_name = LastName,\n\t\tfirst_name = FirstName,\n\t\tbirth_date = BirthDate,\n\t\thire_date = HireDate,\n\t\taddress = Address,\n\t\tcity = City,\n\t\tregion = Region,\n\t\tpostal_code = PostalCode,\n\t\tcountry = Country\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> finSelectDimEmployee\ncategorySource derive(CategoryID = toInteger(byName('CategoryID')),\n\t\tCategoryName = toString(byName('CategoryName')),\n\t\tDescription = toString(byName('Description')),\n\t\tPicture = toBinary(byName('Picture'))) ~> MapCategory\nemployeesSource derive(EmployeeID = toInteger(byName('EmployeeID')),\n\t\tLastName = toString(byName('LastName')),\n\t\tFirstName = toString(byName('FirstName')),\n\t\tTitle = toString(byName('Title')),\n\t\tTitleOfCourtesy = toString(byName('TitleOfCourtesy')),\n\t\tBirthDate = toTimestamp(byName('BirthDate')),\n\t\tHireDate = toTimestamp(byName('HireDate')),\n\t\tAddress = toString(byName('Address')),\n\t\tCity = toString(byName('City')),\n\t\tRegion = toString(byName('Region')),\n\t\tPostalCode = toString(byName('PostalCode')),\n\t\tCountry = toString(byName('Country')),\n\t\tHomePhone = toString(byName('HomePhone')),\n\t\tExtension = toString(byName('Extension')),\n\t\tPhoto = toBinary(byName('Photo')),\n\t\tNotes = toString(byName('Notes')),\n\t\tReportsTo = toInteger(byName('ReportsTo')),\n\t\tPhotoPath = toString(byName('PhotoPath'))) ~> MapEmployees\norderDetailsSource derive(OrderID = toInteger(byName('OrderID')),\n\t\tProductID = toInteger(byName('ProductID')),\n\t\tUnitPrice = toDecimal(byName('UnitPrice')),\n\t\tQuantity = toInteger(byName('Quantity')),\n\t\tDiscount = toFloat(byName('Discount'))) ~> MapOrderDetails\nterretoriesSource derive(TerritoryID = toString(byName('TerritoryID')),\n\t\tTerritoryDescription = toString(byName('TerritoryDescription')),\n\t\tRegionID = toInteger(byName('RegionID'))) ~> MapTerretories\nemployeeTerretoriesSource derive(EmployeeID = toInteger(byName('EmployeeID')),\n\t\tTerritoryID = toString(byName('TerritoryID'))) ~> MapTerritoriesEmployee\nsupplierSource derive(SupplierID = toInteger(byName('SupplierID')),\n\t\tCompanyName = toString(byName('CompanyName')),\n\t\tContactName = toString(byName('ContactName')),\n\t\tContactTitle = toString(byName('ContactTitle')),\n\t\tAddress = toString(byName('Address')),\n\t\tCity = toString(byName('City')),\n\t\tRegion = toString(byName('Region')),\n\t\tPostalCode = toString(byName('PostalCode')),\n\t\tCountry = toString(byName('Country')),\n\t\tPhone = toString(byName('Phone')),\n\t\tFax = toString(byName('Fax')),\n\t\tHomePage = toString(byName('HomePage'))) ~> MapSuppliers\nproductsSource derive(ProductID = toInteger(byName('ProductID')),\n\t\tProductName = toString(byName('ProductName')),\n\t\tSupplierID = toInteger(byName('SupplierID')),\n\t\tCategoryID = toInteger(byName('CategoryID')),\n\t\tQuantityPerUnit = toString(byName('QuantityPerUnit')),\n\t\tUnitPrice = toDecimal(byName('UnitPrice')),\n\t\tUnitsInStock = toInteger(byName('UnitsInStock')),\n\t\tUnitsOnOrder = toInteger(byName('UnitsOnOrder')),\n\t\tReorderLevel = toInteger(byName('ReorderLevel')),\n\t\tDiscontinued = toBoolean(byName('Discontinued'))) ~> MapProducts\nAddKeyCategory sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkCategory\nAddKeySupervisor sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkSupervisor\nAddKeyEmployee sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkEmployeeDim\nAddKeyAggEmployee sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkFactEmployee\nAddKeySupplier sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkSupplier\nAddKeyProducts sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkProduct\nAddKeyAggEmpMonthly sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkFactEmployeeMonthly"
+		}
+	}
+}

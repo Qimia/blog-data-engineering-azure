@@ -1,0 +1,82 @@
+{
+	"name": "employeeSynapse",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapseLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "toSynapseNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "employee_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "last_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "first_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "birth_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "hire_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "city",
+				"type": "nvarchar"
+			},
+			{
+				"name": "region",
+				"type": "nvarchar"
+			},
+			{
+				"name": "postal_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "supervisor_key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "created_ts",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "northwind",
+			"table": "DimEmployee"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

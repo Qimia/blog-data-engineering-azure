@@ -1,0 +1,24 @@
+{
+	"name": "DimCategory",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datalakeLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ouputNorthwindDS"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "output/DimCategory",
+				"fileSystem": "northwind"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

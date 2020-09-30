@@ -1,0 +1,67 @@
+{
+	"name": "employeeMonthlyFactSynapse",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapseLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "toSynapseNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "employee_key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "employee_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "month",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "total_products",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "total_distinct_products",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "total_orders",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "created_ts",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "northwind",
+			"table": "FactEmployeeMonthly"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,24 @@
+{
+	"name": "ordersParquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datalakeLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "preparedNorthwindDS"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "prepared/orders",
+				"fileSystem": "northwind"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,19 @@
+{
+	"name": "datalakeLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://qdestorageaccount.dfs.core.windows.net",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "keyvaultLS",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "datalakekey1"
+			}
+		}
+	}
+}

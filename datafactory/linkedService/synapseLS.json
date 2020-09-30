@@ -1,0 +1,19 @@
+{
+	"name": "synapseLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDW",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=qde-sql-server.database.windows.net;Initial Catalog=qde_sql_pool;User ID=sql_admin",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "keyvaultLS",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sqldb-pw"
+			}
+		}
+	}
+}

@@ -1,0 +1,41 @@
+{
+	"name": "employeesParquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datalakeLS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"year_p": {
+				"type": "int",
+				"defaultValue": 1996
+			},
+			"month_p": {
+				"type": "int",
+				"defaultValue": 7
+			},
+			"day_p": {
+				"type": "int",
+				"defaultValue": 16
+			}
+		},
+		"folder": {
+			"name": "preparedNorthwindDS"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat('prepared/employees/year=', string(dataset().year_p), '/month=', string(dataset().month_p), '/day=', string(dataset().day_p))",
+					"type": "Expression"
+				},
+				"fileSystem": "northwind"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

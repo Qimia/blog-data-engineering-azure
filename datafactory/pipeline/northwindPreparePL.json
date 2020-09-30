@@ -1,0 +1,40 @@
+{
+	"name": "northwindPreparePL",
+	"properties": {
+		"activities": [
+			{
+				"name": "prepareOrders",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "prepareOrders",
+						"type": "DataFlowReference",
+						"parameters": {
+							"year_p": "1996",
+							"month_p": "7",
+							"day_p": "15"
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "PreparePL"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

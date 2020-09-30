@@ -1,0 +1,30 @@
+{
+	"name": "regionTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "inputNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "RegionID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RegionDescription",
+				"type": "nchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Region"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

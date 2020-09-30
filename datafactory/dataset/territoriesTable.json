@@ -1,0 +1,34 @@
+{
+	"name": "territoriesTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "inputNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TerritoryID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TerritoryDescription",
+				"type": "nchar"
+			},
+			{
+				"name": "RegionID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Territories"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

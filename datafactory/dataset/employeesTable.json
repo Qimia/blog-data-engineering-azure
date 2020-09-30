@@ -1,0 +1,99 @@
+{
+	"name": "employeesTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "inputNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "EmployeeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LastName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FirstName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TitleOfCourtesy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BirthDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "HireDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Region",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PostalCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HomePhone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Extension",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Photo",
+				"type": "image"
+			},
+			{
+				"name": "Notes",
+				"type": "ntext"
+			},
+			{
+				"name": "ReportsTo",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PhotoPath",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Employees"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,30 @@
+{
+	"name": "employeeTerretoriesTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "inputNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "EmployeeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TerritoryID",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "EmployeeTerritories"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

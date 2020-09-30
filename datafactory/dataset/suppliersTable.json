@@ -1,0 +1,70 @@
+{
+	"name": "suppliersTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "inputNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SupplierID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CompanyName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ContactName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ContactTitle",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Region",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PostalCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fax",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HomePage",
+				"type": "ntext"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Suppliers"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

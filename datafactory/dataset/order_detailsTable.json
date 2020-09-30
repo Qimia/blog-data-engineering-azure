@@ -1,0 +1,47 @@
+{
+	"name": "order_detailsTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "inputNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "OrderID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ProductID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "UnitPrice",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "Quantity",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "Discount",
+				"type": "real",
+				"precision": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Order Details"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

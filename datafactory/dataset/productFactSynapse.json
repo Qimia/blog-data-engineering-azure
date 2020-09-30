@@ -1,0 +1,57 @@
+{
+	"name": "productFactSynapse",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapseLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "toSynapseNorthwindDS"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "product_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "supplier_key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "category_key",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "times_ordered",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "units_in_stock",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "created_ts",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "northwind",
+			"table": "FactProduct"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
